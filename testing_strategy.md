@@ -102,12 +102,13 @@ Delta recovery tests are run only in an isolated, disposable test table. Do not 
 
 Reported fortnightly alongside the status meeting.
 
-### 2.6 Data integrity and traceability approach
+### 2.6 Data integrity and traceability approach - is it in our scope?
 
 Test against **ALCOA+** attributes: attributable (user/system), contemporaneous (timestamps), original (immutable bronze), accurate (rules), complete, consistent, enduring, available. Test evidence is stored in ADO Test Plans and the Confluence hub with run IDs, commit SHAs and environment versions so any result can be reproduced.
 
-## 3. Alternatives considered
 
+## 3. Alternatives considered
+-- to be removed
 1. **Manual-heavy testing:** rejected, too slow for an 8-9 week build and not repeatable per deployment.
 2. **Full E2E-only testing:** rejected, brittle and slow, poor fault isolation across many integrations.
 3. **Heavy upfront GxP validation:** rejected, explicitly out of scope; we prepare evidence structure instead.
@@ -118,7 +119,7 @@ Test against **ALCOA+** attributes: attributable (user/system), contemporaneous 
 - (+) Fast feedback, repeatable regression for the three assays, audit-ready evidence, DQ rules testable by non-developers.
 - (+) Aligns with Bayer-standard tooling, lowering access and approval friction.
 - (-) Upfront effort to create golden datasets and DQ rule test cases; requires SME time in the first sprints.
-- (-) Excel/VBA connector cannot be fully automated; depends on a Bayer laptop being available.
+- (-) Excel/VBA connector cannot be fully automated; depends on a Bayer laptop being available. (REVIEW)
 - (-) Dependence on Bayer test environments and external system test instances (RedLIMS, EvaluWhale, C360, AssayLink); instability there impacts E2E reliability.
 
 ## 5. Risks and mitigations
@@ -132,7 +133,7 @@ Test against **ALCOA+** attributes: attributable (user/system), contemporaneous 
 | Short UAT window and 2-day feedback turnaround | Pre-UAT dry run, scripts in Gherkin, daily defect triage |
 | Unknown PDC behaviour | Add compatibility checks in discovery; log as risk |
 
-## 6. Open points to confirm (before moving to Accepted)
+## 6. Open points to confirm (before moving to Accepted) - remove after review
 
 1. Databricks DQX configuration and governance model for PDE: platform owners to confirm rule ownership, reporting, and enforcement scope.
 2. Are test and UAT environments separate from DEV? Which external systems offer test instances?
@@ -140,10 +141,3 @@ Test against **ALCOA+** attributes: attributable (user/system), contemporaneous 
 4. Coverage thresholds and the severity model: confirm with Bayer SPOC.
 5. Who from Bayer executes UAT (names, capacity), and are external collaborators in the MVP UAT or deferred?
 6. Which environment hosts audit/lineage reconstruction tests, and what retention applies to test evidence?
-
-## 7. Next steps
-
-1. Review this ADR with Tech Lead, DevOps, FAIR Engineer, Data Governance Lead (day 2).
-2. Publish as ADR-001 in the documentation hub; link from ADO item.
-3. Create the master test plan, ADO Test Plan structure, and golden datasets backlog items.
-4. Draft CI quality gates with DevOps.
